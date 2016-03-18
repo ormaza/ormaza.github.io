@@ -24,7 +24,7 @@
 		<p>O objetivo é trocar partições da imagem de lugar. Assim particionei a imagem original em 4 regiões guardadas nas matrizes A,B,C,D. Em seguida instanciei uma matriz de saida out e a preenchi com as matrizes anteriormente citadas. </p>
 
 		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo3-2.png"/>
-		<p style="text-align:center"><a href="https://github.com/ormaza/ormaza.github.io/trocaregioes.cpp">Código</a></p>
+		<p style="text-align:center"><a href="trocaregioes.cpp">Código</a></p>
 		<br>
 
 		<h3 style="text-align:center">4.Preenchendo regiões</h3>
@@ -34,7 +34,7 @@
 		<p>Foi pedido uma solução para o problema de existir mais de 255 objetos na cena. Isso gera problema pois a imagem que temos em tom de cinza varia seus niveis de 0 á 255. Como o floodfill está marcando uma dada região com o contador de objetos esse valor no caso acima irá ultrapassar 255. A solução que achei foi usar a função min() da biblioteca math retornando como valor máximo para o floodfill o valor 255. min(255,nojects) significa que se nojects>255 retorne 255 senao retorne nobjects. </p>
 
 		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo4-1.png"/>
-		<p style="text-align:center"><a href="https://github.com/ormaza/ormaza.github.io/labeling.cpp">Código</a></p>
+		<p style="text-align:center"><a href="labeling.cpp">Código</a></p>
 		<br>
 
 		<h3 style="text-align:center">5.Manipulação de histogramas</h3>
@@ -44,7 +44,7 @@
 		<p>Para fazer a equalização utilizei a função equalizeHist(src,dest) do opencv. Por se tratar de video foram feitas equalizações para as três matrizes de cor. Não foi necessário alocar espaço extra para guardar a matriz equalizada, pois do modo que foi utlizado a matriz de cor original é sobrescrita pela modificada</p>
 
 		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo5-1.png"/>
-		<p style="text-align:center"><a href="https://github.com/ormaza/ormaza.github.io/equalize.cpp">Código</a></p>
+		<p style="text-align:center"><a href="equalize.cpp">Código</a></p>
 		<br>
 
 		<h3 style="text-align:center">6.Filtragem no domínio espacial I</h3>
@@ -54,7 +54,7 @@
 		<p>Nesse exercicio foi pedido para fazer um filtro que calculasse o laplaciano do gaussiano das imagens capturadas. Assim adicionei switch case um código que primeiro executa o filtro gaussiano e no resultado obtido executa o laplaciano.</p>
 
 		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo6-1.png"/>
-		<p style="text-align:center"><a href="https://github.com/ormaza/ormaza.github.io/laplgauss.cpp">Código</a></p>
+		<p style="text-align:center"><a href="laplgauss.cpp">Código</a></p>
 
 		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo6-2.png"/>
 

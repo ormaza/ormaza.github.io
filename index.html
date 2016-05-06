@@ -14,16 +14,16 @@
 
 		<h4>cannypoints.cpp</h4>
 
-		<p>Nessa prática foi pedido para gerar uma imagem que imite a técnica pontilhista. O Pontilhismo é uma técnica de pintura e desenho em que as imagens são definidas por pequenas manchas ou pontos. Para criar a imagem foi utilizado o filtro de canny. Esse filtro faz a detecção das bordas de uma imagem, e é a partir dessas bordas que preencho a imagem com pontos. Na primeira parte foi aplicada a técnica pontilhista a toda a imagem, usando circulos de raio consideravel, e por causa disso o passo entre um pixel e outro foi maior.</p>
+		<p>Nessa prática foi pedido para gerar uma imagem que imite a técnica pontilhista. O Pontilhismo é uma técnica de pintura e desenho em que as imagens são definidas por pequenas manchas ou pontos. Para ajudar reprodução dessa técnica foi utilizado o filtro de canny. Esse filtro faz a detecção das bordas de uma imagem, e é a partir da posição dessas bordas que preencho a imagem de saida com pontos. O filtro de canny trabalha com dois limiares na proporção de 1 pra 3. Quanto menor o limiar, mais bordas são capturadas. Abaixo vemos um exemplo da detecção de bordas do algoritmo com o limiar 60.</p>
 
 		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo11-1.png"/>
 
-		<p>Depois disso é a parte em que aplico o filtro de canny. Esse filtro trabalha com dois limiares, e nesse caso foi aplicada a eles a proporção de 1/3. Quanto menor o valor do limiar mais bordas são detectadas. No algoritmo temos um laço de repetição que faz a variação desse limiar, e para cada novo limiar o filtro de canny é recalculado e o pontilhismo é executado nas bordas capturadas pelo filtro. Nesse passo os circulos aplicados tem raio de valor randomico, e como no passo anterior, os circulos tem plano de fundo que coincide com aquele pixel da imagem original, justamente para que a imagem original ainda possa ser vista.</p>
+		<p>Para realizar o pontilhismo foi criado um laço de repetição que faz a variação do limiar do filtro de canny partindo de 0 até 200 num passo 10. Para cada iteração canny é recalculado e os circulos são escritos na imagem de saida. Vale salientar que antes de executar o laço a imagem de entrada foi totalmente copiada, sem modificações, para a imagem de saida, para que nos locais onde não for detectado borda não ficarmos com espaços em branco, mas sim preenchidos com a imagem original. Os circulos que são acrescentados á imagem tem tamanho randomico e atingem no maximo um raio de 4 pixels, valor que obtive melhor resultado para essa imagem. A textura dos circulos também coincide com a da imagem original.<p>
 
-		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo11-2.png"/><br>
-
-		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo11-3.png">
+		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo11-2.png">
 		<p style="text-align:center"><a href="https://ormaza.github.io/cannypoints.cpp">Código</a></p>
+
+		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo11-3.png"/><br>
 		
 	</body>
 </html>

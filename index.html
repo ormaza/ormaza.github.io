@@ -14,11 +14,11 @@
 
 		<h4>cannypoints.cpp</h4>
 
-		<p>Nesse projeto foi pedido para se gerar uma imagem pontilhista usando as bordas produzidas pelo algoritmo de Canny para melhorar a qualidade dessa técnica. Assim primeiramente foi aplicada a técnica pontilhista em toda a imagem, usando circulos de tamanho grande para essa parte.</p>
+		<p>Nessa prática foi pedido para gerar uma imagem que imite a técnica pontilhista. O Pontilhismo é uma técnica de pintura e desenho em que as imagens são definidas por pequenas manchas ou pontos. Para criar a imagem foi utilizado o filtro de canny. Esse filtro faz a detecção das bordas de uma imagem, e é a partir dessas bordas que preencho a imagem com pontos. Na primeira parte foi aplicada a técnica pontilhista a toda a imagem, usando circulos de raio consideravel, e por causa disso o passo entre um pixel e outro foi maior.</p>
 
 		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo11-1.png"/>
 
-		<p>Após isso criei um laço de repetição que faz variar o limiar utilizado no filtro de canny. Nesse filtro quanto menor o limiar mais bordas são capturadas. Internamente no laço, em cada borda capturada serão desenhados pontos de raio randomico, mas com tamanho máximo bem inferior ao passo anterior apresentado. Esses circulos tem planos de fundo que coincidem com a imagem original.</p>
+		<p>Depois disso é a parte em que aplico o filtro de canny. Esse filtro trabalha com dois limiares, e nesse caso foi aplicada a eles a proporção de 1/3. Quanto menor o valor do limiar mais bordas são detectadas. No algoritmo temos um laço de repetição que faz a variação desse limiar, e para cada novo limiar o filtro de canny é recalculado e o pontilhismo é executado nas bordas capturadas pelo filtro. Nesse passo os circulos aplicados tem raio de valor randomico, e como no passo anterior, os circulos tem plano de fundo que coincide com aquele pixel da imagem original, justamente para que a imagem original ainda possa ser vista.</p>
 
 		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo11-2.png"/><br>
 

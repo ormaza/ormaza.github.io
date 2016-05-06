@@ -59,30 +59,11 @@ int main(int argc, char** argv){
 
   random_shuffle(xrange.begin(), xrange.end());
 
-  int raio=7;
+  int raio;
 
-  for(int i=0;i<width;i+=7){
-      random_shuffle(yrange.begin(), yrange.end());
-      for(int j=0;j<height;j+=7){
-        {
-        x = i+rand()%(2*JITTER)-JITTER+1;
-        y = j+rand()%(2*JITTER)-JITTER+1;
-        gray = image.at<uchar>(x,y);
-        circle(points,
-               cv::Point(y,x),
-               raio,
-               CV_RGB(gray,gray,gray),
-               -1,
-               CV_AA);
-      }
-      }
-  }
+  out = image.clone();
 
-  imwrite("points.png", points);
-
-  out = points.clone();
-
-  for(int limiar=10; limiar<200; limiar+=10){
+  for(int limiar=0; limiar<=200; limiar+=10){
 
     Canny(image, border, limiar, 3*limiar);
     // imwrite("canny.png", border);

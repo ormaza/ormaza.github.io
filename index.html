@@ -10,74 +10,20 @@
 
 		<p style="text-align:center"><em>Soluções para os problemas propostos pelo professor Agostinho Brito Jr na disciplina Processamento Digital de Imagens semestre 2016.1</em></p><br>
 
-		<h3 style="text-align:center">3.Manipulando pixels em uma imagem</h3>
+		<h3 style="text-align:center">11.Canny e a arte com pontilhismo</h3>
 
-		<h4>regions.cpp</h4>
+		<h4>cannypoints.cpp</h4>
 
-		<p>Nesse programa o usuário entrará com as coordenadas x e y de dois pontos P1 e P2 e o algoritmo fará a modificação para o negativo da imagem na área que está entre esses pontos. Para modificar parte da imagem para seu negativo fiz para cada pixel selecionado o calculo (255-valorRGB) </p>
+		<p>Nessa prática foi pedido para gerar uma imagem que imite a técnica pontilhista. O Pontilhismo é uma técnica de pintura e desenho em que as imagens são definidas por pequenas manchas ou pontos. Para ajudar reprodução dessa técnica foi utilizado o filtro de canny. Esse filtro faz a detecção das bordas de uma imagem, e é a partir da posição dessas bordas que preencho a imagem de saida com pontos. O filtro de canny trabalha com dois limiares na proporção de 1 pra 3. Quanto menor o limiar, mais bordas são capturadas. Abaixo vemos um exemplo da detecção de bordas do algoritmo com o limiar 60.</p>
 
-		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo3-1.png">
-		<p style="text-align:center"><a href="regions.cpp">Código</a></p>
+		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo11-1.png"/>
 
-		<img style="display: block;margin-left: auto;margin-right: auto" src="img3-1.png">
+		<p>Para realizar o pontilhismo foi criado um laço de repetição que faz a variação do limiar do filtro de canny partindo de 0 até 200 num passo 10. Para cada iteração canny é recalculado e os circulos são escritos na imagem de saida. Vale salientar que antes de executar o laço a imagem de entrada foi totalmente copiada, sem modificações, para a imagem de saida, para que nos locais onde não for detectado borda não ficarmos com espaços em branco, mas sim preenchidos com a imagem original. Os circulos que são acrescentados á imagem tem tamanho randomico e atingem no maximo um raio de 4 pixels, valor que obtive melhor resultado para essa imagem. A textura dos circulos também coincide com a da imagem original.<p>
 
-		<h4>trocaregioes.cpp</h4>
+		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo11-2.png">
+		<p style="text-align:center"><a href="https://ormaza.github.io/cannypoints.cpp">Código</a></p>
 
-		<p>O objetivo desse código é trocar partições da imagem de um lugar para outro na imagem. Assim particionei a imagem original em 4 regiões que foram guardadas nas matrizes A,B,C,D. Em seguida instanciei uma matriz de saida out e a preenchi com as matrizes anteriormente citadas, numa ordem que fizesse a imagem de saida estar com as regiões invertidas se comparada com a imagem original. </p>
-
-		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo3-2.png"/>
-		<p style="text-align:center"><a href="trocaregioes.cpp">Código</a></p>
+		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo11-3.png"/><br>
 		
-		<img style="display: block;margin-left: auto;margin-right: auto" src="img3-2.png">
-
-		<br>
-
-		<h3 style="text-align:center">4.Preenchendo regiões</h3>
-
-		<h4>labeling.cpp</h4>
-
-		<p>Foi pedido uma solução para o problema de existir mais de 255 objetos na cena. Isso gera problema pois a imagem que temos em tom de cinza varia seus niveis de 0 á 255. Como o floodfill está marcando uma dada região com o contador de objetos esse valor no caso iria ultrapassar 255. A solução que achei foi usar a função min() da biblioteca math.h retornando como valor máximo para o floodfill o valor 255.</p>
-
-		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo4-1.png"/>
-		<p style="text-align:center"><a href="labeling.cpp">Código</a></p>
-
-		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo4-1-extra.png"/>
-		<p style="text-align:center"><em>Função min()</em></p>
-
-		<br>
-
-		<h3 style="text-align:center">5.Manipulação de histogramas</h3>
-
-		<h4>equalize.cpp</h4>
-
-		<p>Para fazer a equalização utilizei a função equalizeHist(src,dest) do opencv. Por se tratar de video foram feitas equalizações para as três matrizes de cor. Não foi necessário alocar espaço extra para guardar a matriz equalizada, pois do modo que foi utlizado a matriz de cor original é sobrescrita pela modificada. Para fins de exemplificação foi escrito um programa que equalizava apenas uma imagem utilizando a mesma função. O resultado é apresentado abaixo.</p>
-
-		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo5-1.png"/>
-		<p style="text-align:center"><a href="equalize.cpp">Código</a></p>
-		
-		<img style="display: block;margin-left: auto;margin-right: auto" src="img5-1.png"/>
-
-		<h4>motiondetector.cpp</h4>
-
-		<p>Nesse exercicio foi pedido uma comparação entre histogramas. O histograma de uma componente de cor só seria calculado continuamente e comparado com o ultimo histograma calculado. Caso a diferença ultrapasse certo limiar se ativaria um alarme. No código a matriz de cor escolhida foi a R. O histOldR guarda a matriz R obtida na iteração anterior e o histR guarda a matriz R atual. Para comparar foi utilizada a função compareHist() do opencv usando o método da correlação. Essa função retorna valores entre 0 e 1, e para tal implementação utilizado um limiar de 0,95. Caso esse limiar seja alcançado três vezes é impresso um texto na tela através da função putText() escrito ALARME</p>
-
-		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo5-2.png"/>
-		<p style="text-align:center"><a href="motiondetector.cpp">Código</a></p>
-		
-		<img style="display: block;margin-left: auto;margin-right: auto" src="img5-2.png"/>
-		
-		<br>
-
-		<h3 style="text-align:center">6.Filtragem no domínio espacial I</h3>
-
-		<h4>laplgauss.cpp</h4>
-
-		<p>Nesse exercicio foi pedido para fazer um filtro que calculasse o laplaciano do gaussiano das imagens capturadas. Assim adicionei ao switch case um código que primeiro executa o filtro gaussiano e no resultado obtido executa o laplaciano.</p>
-
-		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo6-1.png"/>
-		<p style="text-align:center"><a href="laplgauss.cpp">Código</a></p>
-
-		<img style="display: block;margin-left: auto;margin-right: auto" src="codigo6-2.png"/>
-
 	</body>
 </html>

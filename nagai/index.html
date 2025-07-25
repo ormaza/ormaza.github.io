@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8" />
+    <title>Hiroshi Nagai Appreciation</title>
+    <style>
+        .audio-container {
+            position: fixed; /* Fixes the container relative to the viewport */
+            bottom: 0;      /* Positions the container at the bottom */
+            left: 0;        /* Aligns the container to the left edge */
+            width: 100%;    /* Makes the container span the full width */
+            display: flex;  /* Enables Flexbox for centering its content */
+            justify-content: center; /* Horizontally centers the audio element */
+            padding: 10px 0; /* Adds some padding for visual spacing */
+            /* background-color: rgba(255, 255, 255, 0.8);  Optional: semi-transparent background */
+            z-index: 1000; /* Ensures the audio player is on top of other content */
+        }
+    </style>
+</head>
+<script>
+    window.onclick = () => {
+        play();
+    }
+    function go_full_screen(){
+        var elem = document.documentElement;
+        if (elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.msRequestFullscreen) {
+            elem.msRequestFullscreen();
+        } else if (elem.mozRequestFullScreen) {
+            elem.mozRequestFullScreen();
+        } else if (elem.webkitRequestFullscreen) {
+            elem.webkitRequestFullscreen();
+        }
+    }
+    function play()
+    {
+        var vAudio = document.getElementById("divAudio");
+        var hasInit = false;
+        if(!hasInit)
+        {
+            hasInit = true;
+            vAudio.play();
+            go_full_screen();
+        }
+    }
+    function init()
+    {
+        //https://wallpapercave.com/hiroshi-nagai-computer-wallpapers
+        const fundos = ["https://i.pinimg.com/1200x/f9/c8/74/f9c874f1e5b2a804fa3b57a4c83d7738.jpg", 
+        "https://wallpapercave.com/wp/wp12944071.png", 
+        "https://wallpapercave.com/wp/wp12944122.png"];
+        const randomElement = fundos[Math.floor(Math.random() * fundos.length)];
+        document.body.style.backgroundImage = "url('" + randomElement + "')";
+    }
+</script>
+<body onload="init()" onclick="play()" style="background-size: cover;">
+    <!-- <iframe width="420" height="236" 
+    src="https://www.youtube.com/embed/videoseries?si=1PTZSaTbG0YbdPxD&amp;list=PLBtqb_EY57GHAMRHnKMEtT7co0G3Fsb0P&autoplay=1" 
+    title="YouTube video player" frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+    referrerpolicy="strict-origin-when-cross-origin" allowfullscreen
+    style="position: absolute; right: 0; bottom: 0;"></iframe> -->
+
+    <div class="audio-container">
+        <audio id="divAudio" autoplay loop>
+            <source src="2350.mp3" type="audio/mpeg">
+            Seu navegador não suporta a tag de áudio.
+        </audio>
+    </div>
+    
+</body>
+</html>
